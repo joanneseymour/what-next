@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="secondary-bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id = "container">
+    <nav>
+        <ul>
+            <li id="decideNavbarLi" class="navbarLi "><a href="#" class="navbarA">Decide</a>
+            </li>
+            <li id="viewNavbarLi" class="navbarLi "><a href="#" class="navbarA">View
+                    all activities</a></li>
+            <li id="addNavbarLi" class="navbarLi "><a href="#" class="navbarA">Add
+                    activities</a></li>
+        </ul>
+    </nav>
+    <div id = "decideMainDiv" class = "main coloured-border">
+        <h2>What should you do next?</h2>
+        <div id="locationContainer">
+            <h4>Choose your location:</h4>
+            <div id="locationRadiosDiv">
+                <input type="radio" id="atWorkRadio" class="radios" name="location" value="atWork">
+                <label for="atWork">At work</label>
+                <br>
+                <input type="radio" id="atHomeRadio" class="radios" name="location" value="atHome">
+                <label for="atHome">At home</label><br>
+            </div>
+        </div>
+
+
+        <div id="tagsContainer">
+            <h4>Choose your tags:</h4>
+            <div id="tagCheckboxesDiv">
+                <input type="checkbox" id="funCheckbox" class="tagCheckboxes" name="funCheckbox" value="fun">
+                <label for="fun"> Fun shit</label><br>
+
+                <input type="checkbox" id="houseworkCheckbox" class="tagCheckboxes" name="houseworkCheckbox"
+                    value="housework">
+                <label for="housework"> Housework</label><br>
+
+                <input type="checkbox" id="learningCheckbox" class="tagCheckboxes" name="learningCheckbox"
+                    value="learning">
+                <label for="learning"> Learning</label><br>
+
+                <input type="checkbox" id="toDoCheckbox" class="tagCheckboxes" name="toDoCheckbox" value="toDo">
+                <label for="toDo"> To do list</label><br>
+            </div>
+        </div>
+        <br>
+        <div id=decideButtonDiv>
+            <button id="decideButton">Decide</button>
+        </div>
+
+        <div id="decision"><br></div>
+    </div> <!--decideMainDiv-->
+
+    <div id = "viewActivitiesMainDiv" class = "main coloured-border">
+        <div id="viewActivitiesContainer">
+            <h2>Your activities</h2>
+            <div id = "manageActivitiesDiv">
+                <button id = "goToAddActivitiesButton">Add </button>
+                <button id = "editActivitiesButton">Edit </button>
+                <button id = "clearButton">Clear </button>
+            </div>
+            <div id="allActivitiesDiv"></div>
+        </div>
+    </div> <!--viewActivitiesMainDiv-->
+
+    <div id = "addActivitiesMainDiv" class = "main coloured-border">
+        <div id = "addActivityDiv">
+        <h2 id = "addActivityH2">Add activities</h2>
+    
+    
+        <div id = "addActivityNameDiv">
+            <label id = "addActivityNameLabel"for="addActivityNameInput">Activity name:</label>
+            <input id = "addActivityNameInput" type = "text">
+        </div>
+        <div id = addLocationTagsContainer>
+        <div id = "addLocationContainer">
+            <h4 id = >Location:</h4>
+            <input type="checkbox" id="addAtWorkCheckbox" class = "addLocationCheckboxes" name="addLocation" value="addAtWork">
+            <label for="addAtWork">At work</label>       
+            <br>
+            <input type="checkbox" id="addAtHomeCheckbox" class = "addLocationCheckboxes" name="addLocation" value="addAtHome">
+            <label for="addAtHome">At home</label>
+            <br>
+            <input type="checkbox" id="addOtherLocationCheckbox" class = "addLocationCheckboxes" name="addLocation" value="addOtherLocation">
+            <label for="addOtherLocation">Other (please enter)</label>
+            <input id = "addOtherLocationInput" type = "text" placeholder="e.g. outside">
+        </div>
+    
+    
+        <div id = "addTagsContainer">
+            <h4>Tags:</h4>
+            <input type="checkbox" id="addFunCheckbox" class = "addTagCheckboxes" name="addFunCheckbox" value="addFun">
+            <label for="addFun"> Fun stuff</label><br> 
+    
+            <input type="checkbox" id="addHouseworkCheckbox" class = "addTagCheckboxes" name="addHouseworkCheckbox" value="addHousework">
+            <label for="addHousework"> Housework</label><br> 
+    
+            <input type="checkbox" id="addLearningCheckbox" class = "addTagCheckboxes" name="addLearningCheckbox" value="addLearning">
+            <label for="addLearning"> Learning</label><br>  
+    
+            <input type="checkbox" id="addToDoCheckbox" class = "addTagCheckboxes" name="addToDoCheckbox" value="addToDo">
+            <label for="addToDo"> To do list</label><br>  
+            <div id = "addOtherTagContainer"></div>
+            <input type="checkbox" id="addOtherTagCheckbox" class = "addTagCheckboxes" name="addOtherTagCheckbox" value="addOtherTag">
+    
+                <label for="addOtherTagCheckbox" id = addOtherTagCheckboxLabel> Other (please enter)</label>
+                <input id = "addOtherTagInput" type = "text" placeholder="e.g. relaxing">
+            </div>
+    
+            <br>  
+        </div>
+    </div>
+    
+        <div id = "buttonsRow">
+            <button id = "saveButton">Save activity</button>
+            <button id = "clearFormButton">Clear form</button>
+            <div id = "addActivityFeedback"></div>
+        </div>
+    </div>
+</div>  <!-- container -->
+    <script src="ltud.js"></script>
+</body>
+
+</html>
