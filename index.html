@@ -6,22 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts/fontawesome-free-5.15.2-web/css/all.css">
 </head>
 
 <body>
 <div id = "container">
     <nav>
         <ul>
-            <li id="decideNavbarLi" class="navbarLi "><a href="#" class="navbarA">Decide</a>
+            <li id="decideNavbarLi" class="navbarLi"><a href="#" class="navbarA">Decide</a>
             </li>
-            <li id="viewNavbarLi" class="navbarLi "><a href="#" class="navbarA">View
+            <li id="viewNavbarLi" class="navbarLi"><a href="#" class="navbarA">View
                     all activities</a></li>
-            <li id="addNavbarLi" class="navbarLi "><a href="#" class="navbarA">Add
+            <li id="addNavbarLi" class="navbarLi"><a href="#" class="navbarA">Add
                     activities</a></li>
         </ul>
     </nav>
     <div id = "decideMainDiv" class = "main coloured-border">
         <h2>What should you do next?</h2>
+        <div id=decideButtonDiv>
+            <button id="decideButton">Decide</button>
+        </div>
+        <div id = "refineDiv"><i id = "refineCaret" class="fas fa-caret-right"></i>&nbsp;&nbsp;Refine your decision...</div>
+        
         <div id="locationContainer">
             <h4>Choose your location:</h4>
             <div id="locationRadiosDiv">
@@ -52,10 +58,7 @@
                 <label for="toDo"> To do list</label><br>
             </div>
         </div>
-        <br>
-        <div id=decideButtonDiv>
-            <button id="decideButton">Decide</button>
-        </div>
+
 
         <div id="decision"><br></div>
     </div> <!--decideMainDiv-->

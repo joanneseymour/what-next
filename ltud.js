@@ -24,6 +24,11 @@ let locationInput;
 let tagCheckboxes = document.getElementsByClassName("tagCheckboxes");
 let decideButton = document.getElementById("decideButton");
 let decision = document.getElementById("decision");
+let refineCaret = document.getElementById("refineCaret");
+let locationContainer = document.getElementById("locationContainer");
+locationContainer.style = "display: none;";
+let tagsContainer = document.getElementById("tagsContainer");
+tagsContainer.style = "display: none";
 let activitiesForThisLocation = [];
 let newActivityName;
 let addActivityDiv = document.getElementById("addActivityDiv");
@@ -124,25 +129,45 @@ function makeNavbarLiActive(clickedNavbarLi){
   }
 }
 
-decideButton.onclick = function () {
-  getActivitiesForLocation();
-  getActivitiesWithTagsForLocation();
-  if (canDoThis.length > 1) {
-    randomNumber = getRandomNumber();
+document.getElementById("refineDiv").onclick = function(){
+  // if (refineCaret.classList.contains("fa-caret-right") && locationContainer.style == "display: none"){
+    if (refineCaret.classList.contains("fa-caret-right")){
+    refineCaret.classList.remove("fa-caret-right");
+    refineCaret.classList.add("fa-caret-down");
+    locationContainer.style = "display: block";
+    tagsContainer.style = "display: block";
   } else {
-    decision.innerHTML = canDoThis;
-  }
-  
-};
-
-function setCheckedLocation() {
-  for (i = 0; i < radios.length; i++) {
-    if (radios[i].checked) {
-      locationInput = radios[i].value;
-      break;
-    }
+    refineCaret.classList.add("fa-caret-right");
+    refineCaret.classList.remove("fa-caret-down");
+    locationContainer.style = "display: none";
+    tagsContainer.style = "display: none";
   }
 }
+
+decideButton.onclick = function () {
+
+  // if decision is not refined by tags or location (i.e. caret points right)
+  if (refineCaret.classList.contains("fa-caret-right")){
+    for (i = 0; i < activities.length; i++){
+      canDoThis.push(activities[i].activityName);
+    }
+    if (canDoThis.length > 1) {
+      randomNumber = getRandomNumber();
+    } else {
+      decision.innerHTML = canDoThis;
+    }
+  } else { // if decision is refined by location and tags
+    getActivitiesForLocation();
+    getActivitiesWithTagsForLocation();
+    if (canDoThis.length > 1) {
+      randomNumber = getRandomNumber();
+    } else {
+      decision.innerHTML = canDoThis;
+    }
+  }
+
+  
+};
 
 function getActivitiesForLocation() {
   setCheckedLocation();
@@ -150,6 +175,15 @@ function getActivitiesForLocation() {
     if (activity.location.includes(locationInput)) {
       activitiesForThisLocation.push(activity);
     }
+  }
+}
+
+function setCheckedLocation() {
+  for (i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      locationInput = radios[i].value;
+      break;
+    } 
   }
 }
 
