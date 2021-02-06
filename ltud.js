@@ -263,7 +263,7 @@ function getRandomNumber() {
         apiKey: "4093a042-4c25-4d6d-b73d-8f8a88cb53d3",
         n: 1,
         min: 1,
-        max: canDoThis.length,
+        max: canDoThis.length-1,
         replacement: true,
         base: 10,
       },
@@ -378,7 +378,9 @@ function showHideAddInput(checkbox, input){
 clearButton.onclick = function(){
   activities = [];
   allActivitiesList = "";
-  allActivitiesDiv.innerHTML = "<br>";
+  allActivitiesDiv.style = "padding: 48px 12px; text-align: center;"
+  allActivitiesDiv.innerHTML = "You currently have no activities";
+
 }
 
 uncheckCheckboxes(tagCheckboxes);

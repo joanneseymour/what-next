@@ -1,0 +1,355 @@
+@media screen and (max-width: 768px) {
+/* *{
+    border: solid red 1px;
+} */
+html{
+    background-image: url('images/sky-1281662_1280.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+body{
+    height: 95vh;
+    padding: 12px;
+    margin: 0px;
+}
+
+#container{
+    display: grid;
+    height: 100%;
+    grid-template-rows: max-content 50vh;
+    
+}
+
+a, label, h2, div {
+    font-family: OpenSans-Regular;
+    color: #f7f9fb;
+}
+
+button{
+    font-family: OpenSans-SemiBold;
+    background-color:  #0677A1;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+nav{
+    grid-row: 1/2;
+    grid-column: 1/3;
+    background-color: none;
+    border-left: solid 1px #BB98444F;
+    border-right:  solid 1px #BB98444F;
+    border-radius: 12px 12px 0px 0px;
+    display: grid;
+    grid-template-rows: max-content;
+}
+
+nav>ul{
+    display: grid;
+    list-style-type:none;
+    margin: 0px;
+    padding: 0px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.coloured-border{
+    border:  solid 1px #BB98444F;
+}
+.navbarLi{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border-radius: 12px 12px 0px 0px;
+    background-color: #373F41;
+
+}
+.navbarA{
+    /* margin: 12px; */
+    padding: 12px 0px;
+    width: min-content;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+#decideNavbarLi{
+    grid-column: 1/2;
+    border-top: solid 1px #BB98444F;
+    border-right: solid 1px #BB98444F;
+    border-bottom: solid 1px #BB98444F;
+}
+
+#viewNavbarLi{
+    grid-column: 2/3;
+    border-top: solid 1px #977e424f;
+    border-right: solid 1px #BB98444F;
+    border-bottom: solid 1px #BB98444F;
+}
+
+#addNavbarLi{
+    grid-column: 3/4;
+    border-top: solid 1px #BB98444F;
+    border-bottom: solid 1px #BB98444F;
+}
+
+.active{
+    border-radius: 12px 12px 0px 0px;
+    margin: 0px;
+    border-bottom: none !important;
+    background-color: #2F333C;
+    /* padding-top: 12px; */
+}
+
+.main{
+    display: grid;
+    grid-column: 1/3;
+    padding: 12px;
+    border-top: none !important;
+    height: 80vh;
+    padding-bottom: 16px;
+    background-color:  #2F333C;
+}
+
+/*************************** Decide ***********************************/
+#decideMainDiv{
+    grid-template-rows: min-content min-content min-content 0.5fr 2fr;
+}
+
+#decideMainDiv > h2{
+    grid-row: 1;
+    margin: 24px 0px;
+    width: max-content;
+}
+
+#decision{
+    grid-row: 2; 
+    grid-column: 1/3;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#decideButtonDiv{
+    display: grid;
+    grid-row: 3;
+    grid-column: 1/3;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 24px;
+}
+
+#decideButton{
+    grid-column: 2/3;
+    border-radius: 12px;
+    background-color: #FFA726;
+}
+
+#refineDiv{
+    grid-row: 4;
+    cursor: pointer;
+}
+
+
+#locationContainer{
+    grid-column: 1/3;
+    grid-row: 5;
+    padding-left: 12px;
+}
+
+#locationRadiosDiv{
+    padding-left: 12px;
+}
+
+#tagsContainer{
+    grid-column: 1/3;
+    grid-row: 6;
+    padding-left: 12px;
+}
+
+#tagCheckboxesDiv{
+    padding-left: 12px;
+}
+/****************************** Add activity **************************************/
+#addActivitiesMainDiv{
+    display: grid;
+    grid-template-rows: repeat(4, min-content);
+}
+
+#addActivityDiv{
+    display: grid;
+    grid-column: 1/3;
+}
+
+#addActivityh2{
+    grid-column: 1/4;
+}
+
+#addActivityNameDiv{
+    display: grid;
+    grid-row: 2/3;
+    grid-column: 1/4;
+    column-gap: 12px;
+    grid-template-columns: max-content max-content;
+}
+
+#addActivityNameLabel{
+    grid-column: 1/2;
+}
+
+#addActivityNameInput{
+    grid-column: 2/4;
+}
+
+#addLocationTagsContainer{
+    display: grid;
+    grid-column: 1/4;
+
+}
+
+#addLocationContainer{
+    grid-column: 1/3;
+    padding-left: 12px;
+}
+
+.addLocationCheckboxes{
+    padding-left: 12px;
+}
+
+#addTagsContainer{
+    grid-column: 1/3;
+    padding-left: 12px;
+}
+
+.addTagCheckboxes{
+    padding-left: 12px;
+}
+
+#addOtherTagContainer{
+    display: grid;
+    grid-template-columns: max-content min-content min-content;
+}
+
+#addOtherTagCheckboxLabel{
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+#buttonsRow{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 32px 0px 20px 12px;
+    width: 100%;
+}
+
+#saveButton{
+    grid-column: 1/2;
+    background-color: #00E676;
+    width: 100%;
+    
+}
+
+#clearFormButton{
+    grid-column: 2/3;
+    background-color: #FF3D00;
+    width: 100%;
+}
+
+#allActivitiesDiv{
+    border: solid black 2px;
+}
+
+#addActivityFeedback{
+    grid-column: 3/4;
+    align-self: center;
+}
+
+/****************************** View activities **************************************/
+
+#viewActivitiesContainer{
+    display: grid;
+    grid-column: 1/3;
+    grid-template-rows: min-content min-content auto;
+}
+
+#manageActivitiesDiv{
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(4, 0.5fr) 1fr 1fr;
+    justify-content: space-between;
+    padding-bottom: 16px;
+}
+
+#manageActivitiesDiv > button{
+    grid-row: 1;
+}
+
+#goToAddActivitiesButton{
+    grid-column: 1;
+    background-color: #00E676;
+}
+
+#editActivitiesButton{
+    grid-column: 2;
+    background-color: #FFEE58;
+}
+
+#clearButton{
+    grid-column: 3;
+    background-color: #FF3D00;
+}
+
+.activityOl{
+    column-count: 3;
+}
+
+/*************colours**********************/
+
+.primary-bg{
+    background-color:  #2F333C;
+}
+
+.primary-dark-bg{
+    background-color: #2D2E36; 
+}
+
+.accent-bg{
+    background-color: #0677A1;
+}
+
+
+.secondary-bg{
+    background-color: #373F41;
+}
+
+.highlight-bg{
+    background-color: #BB7944;
+}
+
+.black-bg{
+    background-color: #010102;
+}
+
+.white-bg{
+    background-color: #f7f9fb;
+}
+
+.white{
+    color: #f7f9fb;
+}
+
+/**********fonts***********/
+
+@font-face {
+    font-family: OpenSans-Regular;
+    src: url(fonts/OpenSans-Regular.ttf);
+  }
+
+@font-face {
+    font-family: OpenSans-SemiBold;
+    src: url(fonts/OpenSans-SemiBold.ttf)
+}
+
+}
