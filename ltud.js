@@ -214,11 +214,17 @@ function clearArrays(){
 
 
 
-function populateList() {
+function populateSampleList() {
   for (i = 0; i < activities.length; i++) {
     let activity = activities[i];
-    let activityLi = "<li>" + activity.activityName + "</li>";
+    let activityLi = "";
+    if (i == 0){
+      console.log(`This is the first activity and as such should have an ol`);
+      allActivitiesList =  "<ol>";
+    }
+    activityLi = "<li>" + activity.activityName + "</li>";
     allActivitiesList += activityLi;
+    console.log(`allActivitiesList is now ${allActivitiesList}`);
   }
   allActivitiesList += "</ol>";
   allActivitiesDiv.innerHTML = allActivitiesList;
@@ -284,6 +290,9 @@ clearArrays();
 
 
 saveButton.onclick = function(){
+  // trying to get a numbered list if allActivitiesList has already been cleared
+  console.log(`after pressing save button, activities array is:\n${activities}`);
+  allActivitiesList.style = "text-align: left";
   newActivityName = addActivityNameInput.value;
   addLocationsToNewActivity();
   addTagsToNewActivity();
@@ -292,9 +301,16 @@ saveButton.onclick = function(){
     location: newLocationsArray,
     tags: newTagsArray
   });
+  console.log(`in the middle of save function, activities array is:\n${activities}`);
+
   allActivitiesList = allActivitiesList.substring(0,allActivitiesList.length-5);
+  if (activities.length == 1){
+    allActivitiesList += `<ol>`;
+  }
   allActivitiesList += `<li>${newActivityName}</li></ol>`;
+  console.log(`newActivityName is ${newActivityName}`);
   allActivitiesDiv.innerHTML = allActivitiesList;
+  allActivitiesDiv.style = "padding: 0px";
   addActivityNameInput.value = "";
   console.log("Added: \n" + (activities[activities.length-1]).activityName + "\n" + (activities[activities.length-1]).location + "\n" +(activities[activities.length-1]).tags);
   addOtherLocationInput.value = "";
@@ -378,10 +394,11 @@ function showHideAddInput(checkbox, input){
 clearButton.onclick = function(){
   activities = [];
   allActivitiesList = "";
+  console.log(`After pressing clearbutton, allActivitiesList is ${allActivitiesList}`);
   allActivitiesDiv.style = "padding: 48px 12px; text-align: center;"
   allActivitiesDiv.innerHTML = "You currently have no activities";
-
+  console.log(`After clearing, activities array is now ${activities}`);
 }
 
 uncheckCheckboxes(tagCheckboxes);
-populateList();
+populateSampleList();
