@@ -156,7 +156,7 @@ a{
     grid-row: 5;
 }
 
-/****************************** Add activity **************************************/
+/******************** Add activity ****************************/
 #addActivitiesMainDiv{
     display: grid;
     grid-template-rows: repeat(4, min-content);
@@ -239,7 +239,7 @@ a{
     align-self: center;
 }
 
-/****************************** View activities **************************************/
+/****************** View activities *************************/
 
 #viewActivitiesContainer{
     display: grid;
@@ -272,6 +272,12 @@ a{
 #clearButton{
     grid-column: 3;
     background-color: #FF3D00;
+}
+
+.deleteActivityIcons{
+    color: #FF3D00;
+    padding: 6px;
+    margin: 6px;
 }
 
 .activityOl{

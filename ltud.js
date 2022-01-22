@@ -31,6 +31,9 @@ let tagsContainer = document.getElementById("tagsContainer");
 tagsContainer.style = "display: none";
 let activitiesForThisLocation = [];
 let newActivityName;
+let clickedSpan;
+let activityLi;
+let taskId;
 let addActivityDiv = document.getElementById("addActivityDiv");
 let saveButton = document.getElementById("saveButton");
 let addActivityNameInput = document.getElementById("addActivityNameInput");
@@ -212,23 +215,39 @@ function clearArrays(){
   canDoThis = [];
 }
 
-
-
-function populateSampleList() {
-  for (i = 0; i < activities.length; i++) {
-    let activity = activities[i];
-    let activityLi = "";
-    if (i == 0){
-      console.log(`This is the first activity and as such should have an ol`);
-      allActivitiesList =  "<ol>";
+function populateActivityList() {
+  for (n = 0; n < activities.length; n++) {
+    // called it n because i was getting the value of 3 from somewhere else
+    let activity = activities[n];
+    // let activityLi = "";
+    if (n == 0){
+      allActivitiesDiv.innerHTML =  "<ol>";
     }
-    activityLi = "<li>" + activity.activityName + "</li>";
+    activityLi = `<li id = 'activityLi${n}'>${activity.activityName}<span id = 'deleteActivityIcon${n}' class = 'deleteActivityIcons'><i class='fas fa-times'></i></span></li>`;
     allActivitiesList += activityLi;
-    console.log(`allActivitiesList is now ${allActivitiesList}`);
-  }
-  allActivitiesList += "</ol>";
-  allActivitiesDiv.innerHTML = allActivitiesList;
+    if (n == allActivitiesList.length){
+      allActivitiesDiv.innerHTML += "</ol>";
+    }
+    allActivitiesDiv.innerHTML = allActivitiesList;
+  } // for loop
+  addDeleteButtonFunctionality();
 }
+
+function addDeleteButtonFunctionality(){
+  document.querySelectorAll('.deleteActivityIcons').forEach(item => {
+    item.addEventListener('click', event => {
+      clickedSpan = item.outerHTML;
+      let taskId = clickedSpan.substring(28);
+      taskId = taskId.split('"')[0];
+      console.log(`taskId is now ${taskId}`);
+      console.log(`activities was ${activities}`);
+      let removedActivities = activities.splice(taskId, 1);
+      console.log(`removedActivities is ${removedActivities}\nactivities is now ${activities}`);
+      allActivitiesList = "<ol>";
+      populateActivityList();
+    })
+  })
+  }
 
 function getAjaxObject() {
   var ajaxRequest;
@@ -286,11 +305,7 @@ decision.innerHTML = doThis;
 clearArrays();
 }
 
-
-
-
 saveButton.onclick = function(){
-  // trying to get a numbered list if allActivitiesList has already been cleared
   console.log(`after pressing save button, activities array is:\n${activities}`);
   allActivitiesList.style = "text-align: left";
   newActivityName = addActivityNameInput.value;
@@ -400,5 +415,9 @@ clearButton.onclick = function(){
   console.log(`After clearing, activities array is now ${activities}`);
 }
 
+
 uncheckCheckboxes(tagCheckboxes);
-populateSampleList();
+populateActivityList();
+
+
+
