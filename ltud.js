@@ -10,7 +10,7 @@ let viewNavbarLi = document.getElementById("viewNavbarLi");
 let addNavbarLi = document.getElementById("addNavbarLi");
 
 let allActivitiesDiv = document.getElementById("allActivitiesDiv");
-let allActivitiesList = "<ol>";
+let allActivitiesList;
 let data;
 let tagsArray = [];
 let canDoThis = [];
@@ -216,24 +216,25 @@ function clearArrays(){
 }
 
 function populateActivityList() {
+  allActivitiesList = "<ol>";
   for (n = 0; n < activities.length; n++) {
     // called it n because i was getting the value of 3 from somewhere else
     let activity = activities[n];
-    // let activityLi = "";
     if (n == 0){
       allActivitiesDiv.innerHTML =  "<ol>";
     }
     activityLi = `<li id = 'activityLi${n}'>${activity.activityName}<span id = 'deleteActivityIcon${n}' class = 'deleteActivityIcons'><i class='fas fa-times'></i></span></li>`;
+
     allActivitiesList += activityLi;
     if (n == allActivitiesList.length){
       allActivitiesDiv.innerHTML += "</ol>";
     }
     allActivitiesDiv.innerHTML = allActivitiesList;
   } // for loop
-  addDeleteButtonFunctionality();
+  addDeleteButtonsListener();
 }
 
-function addDeleteButtonFunctionality(){
+function addDeleteButtonsListener(){
   document.querySelectorAll('.deleteActivityIcons').forEach(item => {
     item.addEventListener('click', event => {
       clickedSpan = item.outerHTML;
@@ -243,7 +244,6 @@ function addDeleteButtonFunctionality(){
       console.log(`activities was ${activities}`);
       let removedActivities = activities.splice(taskId, 1);
       console.log(`removedActivities is ${removedActivities}\nactivities is now ${activities}`);
-      allActivitiesList = "<ol>";
       populateActivityList();
     })
   })
@@ -305,35 +305,59 @@ decision.innerHTML = doThis;
 clearArrays();
 }
 
+// saveButton.onclick = function(){
+//   console.log(`after pressing save button, activities array is:\n${activities}`);
+//   allActivitiesList.style = "text-align: left";
+//   newActivityName = addActivityNameInput.value;
+//   addLocationsToNewActivity();
+//   addTagsToNewActivity();
+//   activities.push({
+//     activityName: newActivityName,
+//     location: newLocationsArray,
+//     tags: newTagsArray
+//   });
+//   console.log(`in the middle of save function, activities array is:\n${activities}`);
+
+//   allActivitiesList = allActivitiesList.substring(0,allActivitiesList.length-5);
+//   if (activities.length == 1){
+//     allActivitiesList += `<ol>`;
+//   }
+//   allActivitiesList += `<li>${newActivityName}</li></ol>`;
+//   console.log(`newActivityName is ${newActivityName}`);
+//   allActivitiesDiv.innerHTML = allActivitiesList;
+//   allActivitiesDiv.style = "padding: 0px";
+//   addActivityNameInput.value = "";
+//   console.log("Added: \n" + (activities[activities.length-1]).activityName + "\n" + (activities[activities.length-1]).location + "\n" +(activities[activities.length-1]).tags);
+//   addOtherLocationInput.value = "";
+//   addOtherTagInput.value = "";
+//   sayActivitySaved();
+//   uncheckCheckboxes(addLocationCheckboxes);
+//   uncheckCheckboxes(addTagCheckboxes);
+// }
+
 saveButton.onclick = function(){
-  console.log(`after pressing save button, activities array is:\n${activities}`);
   allActivitiesList.style = "text-align: left";
   newActivityName = addActivityNameInput.value;
   addLocationsToNewActivity();
   addTagsToNewActivity();
+  console.log(`before push, there were ${activities.length} activities`);
   activities.push({
     activityName: newActivityName,
     location: newLocationsArray,
     tags: newTagsArray
   });
-  console.log(`in the middle of save function, activities array is:\n${activities}`);
-
-  allActivitiesList = allActivitiesList.substring(0,allActivitiesList.length-5);
-  if (activities.length == 1){
-    allActivitiesList += `<ol>`;
-  }
-  allActivitiesList += `<li>${newActivityName}</li></ol>`;
-  console.log(`newActivityName is ${newActivityName}`);
-  allActivitiesDiv.innerHTML = allActivitiesList;
+  console.log(`after push, there are ${activities.length} activities`);
+  populateActivityList(); // adds to dom and array, adds delete button functionality
+  console.log(`after populateList, there are ${activities.length} activities`);
   allActivitiesDiv.style = "padding: 0px";
   addActivityNameInput.value = "";
-  console.log("Added: \n" + (activities[activities.length-1]).activityName + "\n" + (activities[activities.length-1]).location + "\n" +(activities[activities.length-1]).tags);
   addOtherLocationInput.value = "";
   addOtherTagInput.value = "";
   sayActivitySaved();
   uncheckCheckboxes(addLocationCheckboxes);
   uncheckCheckboxes(addTagCheckboxes);
 }
+
 
 function sayActivitySaved(){
   addActivityFeedback.innerHTML = "Activity was saved!";
